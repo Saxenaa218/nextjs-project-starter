@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { StatusResponse, CompressionResult, VideoMetadata } from '@/types';
+import { StatusResponse, CompressionResult } from '@/types';
 import { getJob, getUpload } from '@/lib/jobManager';
 import { getVideoMetadata } from '@/lib/ffmpeg';
 import { calculateCompressionRatio } from '@/lib/compression';

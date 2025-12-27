@@ -1,12 +1,12 @@
-import { CompressionJob, CompressionOptions, VideoFile } from '@/types';
+import { CompressionJob, CompressionOptions, VideoFile, VideoMetadata } from '@/types';
 import { v4 as uuidv4 } from 'uuid';
 
 // In-memory job storage (in production, use a database)
 const jobs = new Map<string, CompressionJob>();
-const uploads = new Map<string, { file: VideoFile; metadata: any }>();
+const uploads = new Map<string, { file: VideoFile; metadata: VideoMetadata }>();
 
 // Store upload
-export function storeUpload(file: VideoFile, metadata: any): string {
+export function storeUpload(file: VideoFile, metadata: VideoMetadata): string {
   const uploadId = uuidv4();
   uploads.set(uploadId, { file, metadata });
   return uploadId;

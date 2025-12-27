@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getJob } from '@/lib/jobManager';
 import { readFile, fileExists } from '@/lib/storage';
-import fs from 'fs';
 
 export async function GET(
   request: NextRequest,

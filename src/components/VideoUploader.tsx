@@ -8,8 +8,30 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 
 interface VideoUploaderProps {
-  onUploadComplete: (data: any) => void;
+  onUploadComplete: (data: UploadResponse) => void;
   onError: (error: string) => void;
+}
+
+interface UploadResponse {
+  uploadId: string;
+  file: {
+    id: string;
+    name: string;
+    size: number;
+    duration?: number;
+    path: string;
+    mimeType: string;
+  };
+  metadata: {
+    duration: number;
+    width: number;
+    height: number;
+    fps: number;
+    bitrate: number;
+    size: number;
+    hasAudio: boolean;
+    codec: string;
+  };
 }
 
 export function VideoUploader({ onUploadComplete, onError }: VideoUploaderProps) {
@@ -73,7 +95,7 @@ export function VideoUploader({ onUploadComplete, onError }: VideoUploaderProps)
 
       xhr.open('POST', '/api/upload');
       xhr.send(formData);
-    } catch (error) {
+    } catch {
       onError('Upload failed. Please try again.');
       setUploading(false);
     }

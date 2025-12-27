@@ -8,6 +8,7 @@ try {
   } else {
     // Use @ffmpeg-installer/ffmpeg if available
     try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg');
       ffmpeg.setFfmpegPath(ffmpegInstaller.path);
     } catch {
@@ -40,7 +41,8 @@ export function getVideoMetadata(inputPath: string): Promise<VideoMetadata> {
       const width = videoStream.width || 0;
       const height = videoStream.height || 0;
       const fps = eval(videoStream.r_frame_rate || '0') as number;
-      const bitrate = metadata.format.bit_rate ? parseInt(metadata.format.bit_rate) : 0;
+      const bitrate = metadata.format.bit_rate ? 
+        (typeof metadata.format.bit_rate === 'string' ? parseInt(metadata.format.bit_rate) : metadata.format.bit_rate) : 0;
       const codec = videoStream.codec_name || 'unknown';
       const size = metadata.format.size || 0;
       const hasAudio = !!audioStream;

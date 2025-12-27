@@ -29,10 +29,10 @@ export default function Home() {
 
           if (data.status === 'completed') {
             setStage('complete');
-            if (pollingInterval) clearInterval(pollingInterval);
+            clearInterval(interval);
             toast.success('Compression complete!');
           } else if (data.status === 'failed') {
-            if (pollingInterval) clearInterval(pollingInterval);
+            clearInterval(interval);
             toast.error(data.error || 'Compression failed');
           }
         } catch (error) {
@@ -42,7 +42,9 @@ export default function Home() {
 
       setPollingInterval(interval);
 
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+      };
     }
   }, [jobId, stage]);
 

@@ -41,7 +41,7 @@ export function CompressionOptions({ onCompress, disabled }: CompressionOptionsP
           <Label htmlFor="resolution">Resolution</Label>
           <Select
             value={options.resolution}
-            onValueChange={(value: any) => setOptions({ ...options, resolution: value })}
+            onValueChange={(value: 'original' | '1080p' | '720p' | '480p' | '360p') => setOptions({ ...options, resolution: value })}
             disabled={disabled}
           >
             <SelectTrigger id="resolution">
@@ -61,7 +61,7 @@ export function CompressionOptions({ onCompress, disabled }: CompressionOptionsP
           <Label>Quality Preset</Label>
           <RadioGroup
             value={options.quality}
-            onValueChange={(value: any) => setOptions({ ...options, quality: value })}
+            onValueChange={(value: 'high' | 'medium' | 'low') => setOptions({ ...options, quality: value })}
             disabled={disabled}
           >
             <div className="flex items-center space-x-2">
@@ -105,7 +105,7 @@ export function CompressionOptions({ onCompress, disabled }: CompressionOptionsP
           <Label htmlFor="frameRate">Frame Rate</Label>
           <Select
             value={options.frameRate}
-            onValueChange={(value: any) => setOptions({ ...options, frameRate: value })}
+            onValueChange={(value: 'original' | '60' | '30' | '24') => setOptions({ ...options, frameRate: value })}
             disabled={disabled}
           >
             <SelectTrigger id="frameRate">
@@ -124,7 +124,7 @@ export function CompressionOptions({ onCompress, disabled }: CompressionOptionsP
           <Label>Audio Options</Label>
           <RadioGroup
             value={options.audio}
-            onValueChange={(value: any) => setOptions({ ...options, audio: value })}
+            onValueChange={(value: 'keep' | 'remove' | 'reduce') => setOptions({ ...options, audio: value })}
             disabled={disabled}
           >
             <div className="flex items-center space-x-2">
