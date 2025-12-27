@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# video compression application
+/uploads
+/compressed
+*.mp4
+*.mov
+*.avi
