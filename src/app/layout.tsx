@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Abhishek Saxena - Frontend Engineer",
-  description: "Frontend Engineer with 6+ years of experience building modern web applications",
-  keywords: ["frontend", "engineer", "developer", "react", "javascript", "typescript"],
-  authors: [{ name: "Abhishek Saxena" }],
+  title: "Video Compressor - Fast and Easy Video Compression",
+  description: "Compress your videos quickly and easily with advanced compression options. Reduce file size while maintaining quality.",
+  keywords: ["video", "compression", "video compressor", "compress video", "reduce video size"],
+  authors: [{ name: "Video Compressor" }],
   viewport: "width=device-width, initial-scale=1",
 };
 
@@ -19,8 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
+      <body className="antialiased">
         {children}
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );
